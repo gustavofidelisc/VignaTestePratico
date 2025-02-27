@@ -21,7 +21,8 @@ Edite o arquivo `appsettings.json` e adicione suas credenciais da API Mistral:
 ```json
 "MistralSettings": {
   "ApiUrl": "URL_DA_API",
-  "ApiKey": "SUA_CHAVE_AQUI"
+  "ApiKey": "SUA_CHAVE_AQUI",
+  "ModelName": ""
 }
 ```
 
@@ -49,10 +50,10 @@ Ou, se estiver usando o Visual Studio, apenas inicie o projeto (`F5`).
 }
 ```
 
-# Chamada à API da Mistral
+# Chamada à API da Groq
 
 ## Configuração do HttpClient
-O `MistralService` injeta `HttpClient` e configura o cabeçalho de autorização:
+O `GroqService` injeta `HttpClient` e configura o cabeçalho de autorização:
 ```csharp
 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _settings.ApiKey);
 ```
@@ -61,7 +62,7 @@ _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
 Envia um `POST` para a URL configurada em `_settings.ApiUrl`, com um corpo JSON contendo o modelo e a mensagem:
 ```json
 {
-  "model": "mistral-small",
+  "model": "modelo escolhido",
   "messages": [
     {
       "role": "user",
