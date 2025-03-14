@@ -9,9 +9,9 @@ namespace VignaTeste.MinimalAPI.Services
     public class GroqService
     {
         private readonly HttpClient _httpClient;
-        private readonly MistralSettings _settings;
+        private readonly GroqSettings _settings;
 
-        public GroqService(HttpClient httpClient, IOptions<MistralSettings> options)
+        public GroqService(HttpClient httpClient, IOptions<GroqSettings> options)
         {
             _httpClient = httpClient;
             _settings = options.Value;
@@ -49,7 +49,7 @@ namespace VignaTeste.MinimalAPI.Services
                 throw new HttpRequestException($"Erro ao chamar a API da Groq: {response.StatusCode}");
             }
 
-            var result = await response.Content.ReadFromJsonAsync<MistralResponse>();
+            var result = await response.Content.ReadFromJsonAsync<GroqResponse>();
 
             if (result?.Choices == null || result.Choices.Length == 0)
             {

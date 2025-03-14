@@ -9,11 +9,11 @@ builder.Services.AddTransient<ExtratorTextoPDFService>();
 builder.Services.AddHttpClient<GroqService>();
 
 var configuration = builder.Configuration;
-builder.Services.Configure<MistralSettings>(configuration.GetSection("MistralSettings"));
+builder.Services.Configure<GroqSettings>(configuration.GetSection("GroqSettings"));
 
 var app = builder.Build();
 
-app.MapPost("/Processos/Upload/AI", async(IFormFile processoArquivo, ExtratorTextoPDFService pdfService, GroqService mistralService) =>
+app.MapPost("/Processos/Upload/AI", async(IFormFile processoArquivo, ExtratorTextoPDFService pdfService, GroqService groqService) =>
 {
     try
     {
@@ -37,7 +37,7 @@ app.MapPost("/Processos/Upload/AI", async(IFormFile processoArquivo, ExtratorTex
             textoPdf = pdfService.ExtrairTextoDoPdf(memoryStream);
         }
 
-        var processo = await mistralService.ProcessarTextoAsync(textoPdf);
+        var processo = await groqService.ProcessarTextoAsync(textoPdf);
 
         return Results.Ok(processo);
     }

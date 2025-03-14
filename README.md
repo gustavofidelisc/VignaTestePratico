@@ -1,7 +1,7 @@
 # VignaTeste.MinimalAPI
 
 ## Descrição
-Esta é uma API Minimal em .NET que permite o upload de arquivos PDF, extrai o texto do documento e envia para um modelo de IA (Mistral) para processamento. A resposta da IA retorna em formato JSON com as informações extraídas do documento.
+Esta é uma API Minimal em .NET que permite o upload de arquivos PDF, extrai o texto do documento e envia para um modelo de IA (Groq) para processamento. A resposta da IA retorna em formato JSON com as informações extraídas do documento.
 
 ---
 

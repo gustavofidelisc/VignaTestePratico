@@ -1,6 +1,6 @@
 ﻿namespace VignaTeste.MinimalAPI.Models
 {
-    public class MistralResponse
+    public class GroqResponse
     {
         public string Id { get; set; }
         public string Object { get; set; }
